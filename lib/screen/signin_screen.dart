@@ -19,122 +19,150 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.black,
+          ),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              //image
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                //image
 
-              Container(
-                height: 200,
-                child: Image.asset('images/bmb.png'),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+                Container(
+                  height: 200,
+                  child: Image.asset('images/bmb.png'),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
 
-              //ID
+                //ID
 
-              TextField(
-                onChanged: (value) {},
-                decoration: const InputDecoration(
-                  hintText: 'Enter your ID',
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 20,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                TextField(
+                  onChanged: (value) {},
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your ID',
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 20,
                     ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.orange,
-                      width: 1,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                height: 8,
-              ),
+                SizedBox(
+                  height: 8,
+                ),
 
-              //password
+                //password
 
-              TextField(
-                onChanged: (value) {},
-                decoration: const InputDecoration(
-                  hintText: 'Enter your Password',
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 10,
-                    horizontal: 20,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                TextField(
+                  onChanged: (value) {},
+                  decoration: const InputDecoration(
+                    hintText: 'Enter your Password',
+                    contentPadding: EdgeInsets.symmetric(
+                      vertical: 10,
+                      horizontal: 20,
                     ),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.orange,
-                      width: 1,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.orange,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.blue,
-                      width: 2,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.blue,
+                        width: 2,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
                     ),
                   ),
                 ),
-              ),
 
-              SizedBox(
-                height: 10,
-              ),
+                SizedBox(
+                  height: 10,
+                ),
 
-              MyButton(
-                color: Colors.yellow[900]!,
-                title: 'Sign in',
-                onPressed: () {
-                  setState(() {
-                    showSpinner = true;
-                  });
-                  try {
-                    Navigator.pushNamed(context, ChoiseScreen.screenRoute);
+                MyButton(
+                  color: Colors.yellow[900]!,
+                  title: 'Sign in',
+                  onPressed: () {
                     setState(() {
-                      showSpinner = false;
+                      showSpinner = true;
                     });
-                  } catch (e) {
-                    print(e);
-                  }
-                },
-              )
-            ],
+                    try {
+                      Navigator.pushNamed(context, ChoiseScreen.screenRoute);
+                      setState(() {
+                        showSpinner = false;
+                      });
+                    } catch (e) {
+                      print(e);
+                    }
+                  },
+                ),
+
+                // TextButton Sign Up here
+
+                TextButton(
+                  onPressed: () {
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, 'registration_screen', (route) => false);
+                  },
+                  child: Text(
+                    'Sign Up here',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

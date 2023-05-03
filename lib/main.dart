@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_chat/components/side_menu.dart';
 import 'package:flutter_chat/screen/choice_screen.dart';
 import 'package:flutter_chat/screen/local_electionscreen.dart';
 import 'package:flutter_chat/screen/otp_screen.dart';
@@ -7,6 +8,8 @@ import 'package:flutter_chat/screen/phonenumber_screen.dart';
 import 'package:flutter_chat/screen/presidential_electionscreen.dart';
 import 'package:flutter_chat/screen/registration_screen.dart';
 import 'package:flutter_chat/screen/signin_screen.dart';
+//import 'package:flutter_chat/screen/vote_screen.dart';
+import 'package:flutter_chat/screen/wlcome_sec_screen.dart';
 import 'screen/welcom_creen.dart';
 import 'package:flutter_chat/screen/phonenumber_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -31,10 +34,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      //home: PresidentialScreen(),
-      initialRoute: 'phonenumber_screen',
+      home: PresidentialScreen(),
+      //initialRoute: 'phonenumber_screen',
       //initialRoute: 'welcome_screen',
-
+      //initialRoute: 'vote_screen',
+      //initialRoute: 'welcome_sec_screen',
+      //initialRoute: 'presidential_election_screen',
       // routes
 
       routes: {
@@ -47,6 +52,7 @@ class MyApp extends StatelessWidget {
         ParliamenScreen.screenRoute: (context) => ParliamenScreen(),
         PhoneScreen.screenRoute: (context) => PhoneScreen(),
         OtpScreen.screenRoute: (context) => OtpScreen(),
+        //VoteScreen.screenRoute: (context) => VoteScreen(),
       },
     );
   }

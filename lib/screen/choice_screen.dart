@@ -18,6 +18,19 @@ class _ChoiseScreenState extends State<ChoiseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_rounded,
+            color: Colors.black,
+          ),
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -60,7 +73,7 @@ class _ChoiseScreenState extends State<ChoiseScreen> {
 
             MyButton(
               color: Colors.blue[800]!,
-              title: 'الانتخابات الرئاسية',
+              title: 'Presidential Election',
               onPressed: () {
                 Navigator.pushNamed(context, PresidentialScreen.screenRoute);
               },
